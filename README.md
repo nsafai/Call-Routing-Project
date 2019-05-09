@@ -3,7 +3,7 @@ Contributors: Ali Shalabi, Nicolai Safai
 
 ## Description
 
-This project is inspired by a real-world problem at a telephony API company – let's call it *Teleo*.
+This [project] is inspired by a real-world problem at a telephony API company – let's call it *Teleo*.
 The primary task is to implement an international phone call routing system that finds the least cost route through multiple carriers.
 One of the goals of this project is to demonstrate the wide variety of solutions and compare the tradeoffs with each.
 
@@ -116,5 +116,5 @@ After finding the least cost route for each phone number, write the number and i
 
 Name these files "`route-costs-N.txt`" where `N` is the scenario number (see below).
 
-[call routing project]: https://www.dropbox.com/sh/tj6ppp6uwf12cce/AADje96PJhfsIXJEtP1OjwjFa?preview=Call-Routing-Project.pdf
-[data files]: http://make.sc/db-phone-call-routing/CallRoutingProject.pdf
+[project]: https://www.dropbox.com/sh/tj6ppp6uwf12cce/AADje96PJhfsIXJEtP1OjwjFa?preview=Call-Routing-Project.pdf     
+[data files]: http://make.sc/db-phone-call-routing/
