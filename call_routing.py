@@ -24,7 +24,8 @@ class CallRouter(object):
         return self.turn_txt_file_into_array(phone_numbers_path)
     
     def parse_routes(self, route_prices_path):
-        """ Goes through route_prices_path and creates a binary tree """
+        """ Goes through route_prices_path and creates a dictionary 
+        in format [prefix] = price """
         # Parse .txt file into a python array
         routes = self.turn_txt_file_into_array(route_prices_path)
 
@@ -42,8 +43,7 @@ class CallRouter(object):
                 self.prices[prefix] = price # log the cost for that prefix
 
     def get_routing_cost(self, phone_number):
-        """Find longest matching prefix and return cheapest cost
-        Since routes is a binary tree, we only remember cheapest cost for identical prefix"""
+        """Find longest matching prefix and return cheapest cost"""
         last_digit_idx = len(str(phone_number)) - 1
         # Search for full phone number inside prefix, then remove one digit at a time
         while last_digit_idx > 0:
