@@ -59,7 +59,7 @@ class CallRouter(object):
             return 0
 
     def save_routing_costs(self, phone_numbers):
-        start_time = time.time()
+        # start_time = time.time()
 
         # Step 1: Create text file, assign permissions
 
@@ -72,20 +72,16 @@ class CallRouter(object):
         # Step 2: Write each number / cost pair to file
         for number in phone_numbers:
             cost = self.get_routing_cost(number)
-            f.write("{number}:{cost} \r\n".format(number=number, cost=cost))
+            f.write("{number},{cost} \r\n".format(number=number, cost=cost))
 
-        # Step 3: Write perfomance benmarks
-        # call_router.save_routing_costs(call_router.phone_numbers)
-        # f.write('Total run time:{time}'.format(time=(time.time() - start_time))
-
-        # Step 4: Close instance of file
+        # Step 3: Close instance of file
         f.close()
 
 
 def test_call_router():
     start_time = time.time()
-    phone_numbers_path = 'call-routing-files/raw-phone-numbers-10000.txt'  # 10K
-    route_prices_path = 'call-routing-files/raw-route-costs-10000000.txt'  # 10M
+    phone_numbers_path = 'call-routing-files/phone-numbers-10000.txt'  # 10K
+    route_prices_path = 'call-routing-files/route-costs-10000000.txt'  # 10M
     # initalize the call router, which will begin parsing data sources its given automatically
     call_router = CallRouter(phone_numbers_path, route_prices_path)
     # Look up and print costs
