@@ -1,6 +1,28 @@
 # Call Routing Project
 Contributors: Ali Shalabi, Nicolai Safai
 
+## Run Instructions
+- Clone Repo `git clone git@github.com:nsafai/Call-Routing-Project.git`
+- Download [data files]
+- Add data to repo's `./txt-files/` folder (all data does not exist in repo as it was too large for GitHub)
+
+### Scenario_1.py: Least scalable (2 min solution) - 1 phone #, 100k routes
+**CMD+F Method**
+- Open `scenario_1.py`, read instructions there
+
+### Scenario_2.py: More scalable (1-2 hr implementation) - 1k phone #s, 100K routes
+**Run file, copy paste output from Terminal** 
+- Run file with `python3 scenario_2.py`
+- Copy console output
+- Paste into .txt, name appropriately & save
+
+### Scenario_3.py: Most scalable (1 day implementation) - 10k phone #s, 10M routes
+**Run file, output is saved to .txt file automatically** 
+- Run file with `python3 scenario_3.py`. 
+- A file will be created for you automatically with the syntax 'route-costs-10000000.txt'
+
+____________________________________
+
 ## Description
 
 This [project] is inspired by a real-world problem at a telephony API company – let's call it *Teleo*.

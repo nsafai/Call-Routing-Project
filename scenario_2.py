@@ -1,13 +1,15 @@
-# partially pair programmed with github.com/alishalabi
+# pair programmed with github.com/alishalabi
 import random # to generate random numbers
 import re # for regular expressions
 import sys # for command line args
-import time # for benchmarking purposes
+from binarytree import BinarySearchTree, BinaryTreeNode # to store prefixes
 
 class CallRouter(object):
     def __init__(self, phone_numbers_path, route_prices_path):
           # Turn txt files (data sources) into python objects
           self.phone_numbers = self.parse_phone_numbers(phone_numbers_path)
+          # Binary tree of prefixes. Using a BST allows us to find longest prefix as fast as possible
+          self.prefixes = BinarySearchTree()
           # Contains best price per unique prefix. Using a dict allows quick fetch AND update
           self.prices = {}
           # Parse routes which populates self.prefixes and self.prices
@@ -15,8 +17,12 @@ class CallRouter(object):
 
     def turn_txt_file_into_array(self, path_to_file):
         """Turns txt file into list without '\n' or '+' characters"""
-        array = open(path_to_file, 'r').read().split('\n') # split at each new line
-        array.pop() # remove last item of array which is always empty due to new line at EOF
+        file = open(path_to_file, 'r')
+        file_content = file.read() # string representation of .txt file
+        file.close()
+        # (1) Remove '+', turn into array and (2) remove last (empty) item
+        array = re.sub(r'\+', "", file_content).split('\n')
+        array.pop() # remove last item of array which is empty
         return array
 
     def parse_phone_numbers(self, phone_numbers_path):
@@ -24,9 +30,8 @@ class CallRouter(object):
         return self.turn_txt_file_into_array(phone_numbers_path)
     
     def parse_routes(self, route_prices_path):
-        """ Goes through route_prices_path and creates a dictionary 
-        in format [prefix] = price """
-        # Parse .txt file into a python array
+        """ Goes through route_prices_path and creates a binary tree """
+        # Parse .txt file
         routes = self.turn_txt_file_into_array(route_prices_path)
 
         # For every route
@@ -34,21 +39,22 @@ class CallRouter(object):
             # get prefix and price (separated by a comma)
             prefix, price = route.split(',')
 
-            if prefix in self.prices:
+            if self.prefixes.contains(prefix):
                 # Check if price is cheaper
                 if self.prices[prefix] > price:
                     self.prices[prefix] = price
             else: # We've never seen prefix before
-                # self.prefixes.insert(prefix) # insert prefix into our list of prefixes
+                self.prefixes.insert(prefix) # insert prefix into our list of prefixes
                 self.prices[prefix] = price # log the cost for that prefix
 
     def get_routing_cost(self, phone_number):
-        """Find longest matching prefix and return cheapest cost"""
+        """Find longest matching prefix and return cheapest cost
+        Since routes is a binary tree, we only remember cheapest cost for identical prefix"""
         last_digit_idx = len(str(phone_number)) - 1
         # Search for full phone number inside prefix, then remove one digit at a time
         while last_digit_idx > 0:
             substring = phone_number[0:last_digit_idx]
-            if substring in self.prices:
+            if self.prefixes.contains(substring):
                 return self.prices[substring]
             last_digit_idx -= 1
         
@@ -67,17 +73,13 @@ class CallRouter(object):
         return result
 
 def test_call_router():
-    start_time = time.time()
-    phone_numbers_path = 'call-routing-files/phone-numbers-10000.txt' # 10K
-    route_prices_path = 'call-routing-files/route-costs-10000000.txt' # 10M 
-    # initalize the call router, which will begin parsing data sources its given automatically
+    phone_numbers_path = 'call-routing-files/phone-numbers-1000.txt'
+    route_prices_path = 'call-routing-files/route-costs-106000.txt'
     call_router = CallRouter(phone_numbers_path, route_prices_path)
-    # Look up and print costs
-    print(call_router.save_routing_costs(call_router.phone_numbers))
-    print('total run time:', (time.time() - start_time))
-    # Benchmarks on 2.7 GHz Intel Core i7 Processor w/ 16 GB 2133 MHz LPDDR3 RAM:
-    # 1K Phone #s | 1M routes  | 1.1 seconds
-    # 1K Phone #s | 10M routes | 11.3 seconds
+    # Look up costs
+    results_array = call_router.save_routing_costs(call_router.phone_numbers)
+    for result in results_array:
+      print(result)
 
 if __name__ == '__main__':
     test_call_router()
