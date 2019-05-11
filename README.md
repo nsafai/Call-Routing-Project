@@ -6,18 +6,18 @@ Contributors: Ali Shalabi, Nicolai Safai
 - Download [data files]
 - Add data to repo's `./txt-files/` folder (all data does not exist in repo as it was too large for GitHub)
 
-### Scenario_1.py: 1 phone #, 100k routes
-**Least scalable (2 min solution)**: the 'CMD+F' method 
-- Open `scenario_1.py`, read instructions there
+#### Scenario 1: 1 phone #, 100k routes
+Least scalable solution (2 min to implement)
+- Open `scenario_1.py`, read instructions there (this is the 'CMD+F' method )
 
-### Scenario_2.py: 1k phone #s, 100K routes
-**More scalable (1-2 hr implementation)**: Run file, copy paste output
+#### Scenario 2: 1k phone #, 100K routes
+More scalable solution (1-2 hrs to implement)
 - Run file with `python3 scenario_2.py`
 - Copy console output
 - Paste into .txt, name appropriately & save
 
-### Scenario_3.py: 10k phone #s, 10M routes 
-**Most scalable (1 day implementation)**: Run file --> output .txt. file created automatically
+#### Scenario 3: 10k phone #, 10M routes 
+Most scalable solution (1 day to implement)
 - Run file with `python3 scenario_3.py`
 - A file will be created for you automatically with the syntax 'route-costs-10000000.txt'
 
