@@ -1,6 +1,9 @@
 # Call Routing Project
 Contributors: Ali Shalabi, Nicolai Safai
 
+## Description
+The call routing project is able to price phone calls given a list of route costs for different phone # prefixes from a carrier. A full descripion of the problem's requirements can be found at the bottom of this readme.
+
 ## Run Instructions
 - Clone Repo `git clone git@github.com:nsafai/Call-Routing-Project.git`
 - Download [data files]
