@@ -1,4 +1,4 @@
-# Situation: 1 phone number and 1000 routes in a text file
+# Situation: 1 phone number and 100k routes in a text file
 
 # Step 0: Copy full phone number including '+' and ',', for example '+14105548067,'.
 # Step 1: Open routes file.
