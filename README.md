@@ -19,7 +19,7 @@ More scalable solution (1-2 hrs to implement)
 - Copy console output
 - Paste into .txt, name appropriately & save
 
-#### Scenario 3: 10k phone #, 10M routes 
+#### Scenario 3: 10k phone #, 10M routes
 Most scalable solution (1 day to implement)
 - Run file with `python3 scenario_3.py`
 - A file will be created for you automatically with the syntax 'route-costs-10000000.txt'
