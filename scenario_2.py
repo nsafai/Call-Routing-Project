@@ -16,17 +16,16 @@ class CallRouter(object):
           self.parse_routes(route_prices_path)
 
     def turn_txt_file_into_array(self, path_to_file):
-        """Turns txt file into list without '\n' or '+' characters"""
+        """Turns txt file into list without '\n'"""
         file = open(path_to_file, 'r')
         file_content = file.read() # string representation of .txt file
         file.close()
-        # (1) Remove '+', turn into array and (2) remove last (empty) item
-        array = re.sub(r'\+', "", file_content).split('\n')
+        array = file_content.split('\n')
         array.pop() # remove last item of array which is empty
         return array
 
     def parse_phone_numbers(self, phone_numbers_path):
-        """Turns txt file into list of phone numbers without the +"""
+        """Turns txt file into list of phone numbers"""
         return self.turn_txt_file_into_array(phone_numbers_path)
     
     def parse_routes(self, route_prices_path):
