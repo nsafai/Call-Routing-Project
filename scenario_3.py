@@ -16,8 +16,7 @@ class CallRouter(object):
 
     def turn_txt_file_into_array(self, path_to_file):
         """Turns txt file into list without '\n'"""
-        array = open(path_to_file, 'r').read().split(
-            '\n')  # split at each new line
+        array = open(path_to_file, 'r').read().split('\n')  # split at each new line
         array.pop()  # remove last item of array which is always empty due to new line at EOF
         return array
 
@@ -62,12 +61,8 @@ class CallRouter(object):
         # start_time = time.time()
 
         # Step 1: Create text file, assign permissions
-
         # Note: 'w' allows write permissions, '+' creates file if does not exist
         f = open('route-costs-10000000.txt', 'w+')
-
-        # f.write(
-        #     "********************** \r\n Best Routing Costs \r\n **********************")
 
         # Step 2: Write each number / cost pair to file
         for number in phone_numbers:
