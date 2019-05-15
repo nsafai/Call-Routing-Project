@@ -17,7 +17,7 @@ class CallRouter(object):
     def turn_txt_file_into_array(self, path_to_file):
         """Turns txt file into list without '\n'"""
         array = open(path_to_file, 'r').read().split('\n')  # split at each new line
-        array.pop()  # remove last item of array which is always empty due to new line at EOF
+        array.pop() # remove last item of array which is always empty due to new line at EOF
         return array
 
     def parse_phone_numbers(self, phone_numbers_path):
@@ -40,7 +40,6 @@ class CallRouter(object):
                 if self.prices[prefix] > price:
                     self.prices[prefix] = price
             else:  # We've never seen prefix before
-                # self.prefixes.insert(prefix) # insert prefix into our list of prefixes
                 self.prices[prefix] = price  # log the cost for that prefix
 
     def get_routing_cost(self, phone_number):
